@@ -1,0 +1,146 @@
+.cardContainer{
+   margin:4rem;
+    display: flex;
+    /* flex-direction: c; */
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap:2rem;
+    justify-content: center;
+    align-items: center;
+}
+.card-img-top:hover{
+    cursor: pointer;
+}
+.title-admin{
+  display: flex; 
+  justify-content: center; 
+  margin-top: 2rem;
+}
+.title-admin div{
+  background-color:rgb(6, 9, 72);
+  border-radius: 5px;
+  padding: 0.7rem;
+  width: max-content;
+}
+.all-container{
+  display: flex;
+  justify-content:space-around;
+  margin-top: 20px;
+}
+
+.private-container{
+  min-height: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  padding: 10px;
+  overflow:auto;
+  width: 30%;
+  box-shadow: 0 15px 15px 0 black;
+}
+.title-user{
+  color: aliceblue;
+}
+.home a:hover{
+  color: #fff;
+}
+
+footer{
+    padding: 20px;
+    text-align: center;
+    background-color:#755353c7;
+    margin-top: 50px;
+    border-radius: 10px;
+    color: rgb(254, 253, 253);
+  }
+  footer a{
+    padding: 15px;
+    color: rgb(254, 253, 253);
+   
+  }
+  footer img{
+    width: 35px;
+  
+  }
+
+
+  .listtwo {
+    background-color: #755353c7;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    font-family: mukta;
+    font-weight: 300;
+}
+.view {
+  padding: 7px;
+  background-color: #fff;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 300;
+  border-radius: 30px;
+  width: fit-content;
+}
+
+.view:hover {
+  background-color: #000000;
+  color: white;
+}
+  .popup {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4, top 0.4s;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 40%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+.popup img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0 0 0 0.2);
+
+}
+
+.popup h2 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 15px 0 5px;
+}
+
+/* .adminbutton {
+    min-width:20%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0 0 0 0.2);
+} */
+
+.popup b {
+    color: #5305ee;
+}

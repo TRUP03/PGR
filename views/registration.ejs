@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="/css/ruchi.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+</head>
+
+<body style="background-image:url(/images/img1.jpg);">
+  <div class="head">
+    <img id="logo" src="images/cdac logo.jpg" alt="">
+    <div class="title">
+      <h1> Centre for Development of Advanced Computing Center in North East SILCHAR</h1>
+
+      <h3 style="font-size:30px;"> Public Grievance Redressal System</h3>
+  </div>
+    <img id="clg" src="/images/WhatsApp Image 2022-12-19 at 3.45.10 PM.jpeg" alt="">
+  </div>
+  <div class="home">
+    <a href="/">HOME</a>
+    <a href="/about" class="nav"> About</a>
+        <a href="/contact" class="nav">Contact Us</a>
+  </div>
+  <% if(message.length > 0){ %> 
+    <div class="alert">
+      <%= message %> 
+    </div>
+  <% } %>
+  <div class="main">
+    <div class="register">
+      <h2>REGISTRATION FORM</h2><p style="font-weight:400; margin-left: 8rem; color:crimson">(*required fields)</p>
+      <form class="register" action="/" method="post" enctype="multipart/form-data">
+        <div class="container">
+          <div class="input-box">
+            <label for="">First Name*:</label>
+            <input type="text" name="firstName" value="" class="first-name" placeholder="First name">
+          </div>
+
+          <div class="input-box">
+            <label for="">last Name*:</label>
+            <input type="text" name="lastName" value="" id="last-name" placeholder="last name">
+          </div>
+
+          <div class="input-box">
+            <label for="">Email Id*:</label>
+            <input id="email" type="email" name="username" value="" placeholder="Email Id">
+          </div>
+
+          <div class="input-box">
+            <label for="">Mobile Number*:</label>
+            <input id="mobile" type=" text" name="mobile" value="" placeholder="Mobile">
+          </div>
+          <div class="input-box">
+            <label for="">Password:</label>
+              <p style="font-size:medium; color:crimson">(*Password should contains minimum 8 letters, </p>
+              <p style="font-size:medium; color:crimson">One special character, and at least one digit)</p>
+            <input id="password" type="password" name="password" value="" placeholder="Password">
+          </div>
+
+          <div class="input-box">
+            <label for="">Confirm Password:</label>
+            <input id="confirm" type="password" name="confirmPass" value="" placeholder="Confirm Password">
+          </div>
+          <div class="formdesign">
+            <label for="">Age:</label>
+            <input id="Age" type="text" name="age" value="" placeholder="Age">
+        </div>
+          <div class="input-box">
+            <label for=""> Aadhaar ID/Voter ID/PAN Card ID:*:</label>
+            <input id="Aadhaar" type="text" name="adharNo" value="" placeholder="Id">
+          </div>
+          <div class="input-box">
+            <label for="">Aadhaar ID/Voter ID/PAN Card ID Proof:*:</label>
+            <input id="Aadhaar" type="file" name="adharImg" value="">
+          </div>
+        <div class="gender">
+          <p>Type of Person*</p>
+           <div class="gender-details">
+            <input type="radio" name="typeOfPerson" value="citizen" id="female">End User (Complaint
+            Reporting Person)
+            <input type="radio" name="typeOfPerson" value="assigningOfficer" id="male" checked>
+            Assigning Officer
+            <input type="radio" name="typeOfPerson" value="technician" id="other">Technician
+         </div>
+
+        </div> 
+        <div class="sub">
+          <input id="submit" type="submit" name="submit" value="SUBMIT">
+        </div>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+
+
+  <footer>
+    <p>
+     <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+     <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+     <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+     <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+     <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+     <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+     <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img src="/images/pics/linkedin.png" alt=""></a>
+     <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="/images/pics/twitter.png" alt=""></a>
+    </p>
+    <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
+    <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+ </footer>
+</body>
+
+</html>

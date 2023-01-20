@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>forgot username</title>
+  <link rel="stylesheet" href="/css/styles8.css">
+</head>
+
+<body style="background-image:url(/images/img1.jpg);">
+  <div class="head">
+  <img id="logo" src="images/cdac logo.jpg" alt="">
+  
+<div class="title" >
+  <h1> Centre for Development of Advanced Computing Center in North East  SILCHAR</h1>
+  
+  <h3 style="font-size:30px;">Public Grievance Redressal System</h3>
+</div>
+<img id="clg" src="/images/clgpic.jpeg" alt="">
+</div>
+  <div class="home">
+    <a href="/" class="nav">HOME</a>
+    <a href="about" class="nav">ABOUT US</a> 
+      <a href="/contact" class="nav">CONTACT US</a>
+   
+      <!-- <a href="https://www.cdac.in/index.aspx?id=edu_acts_NECertificateSilchar">C-DAC</a> -->
+      <a style="width:200px;" href="https://www.cdac.in/index.aspx?id=edu_acts_NECertificateSilchar">C-DAC Main Website</a>
+</div>
+
+    <div class="div1">
+
+      <h1 id="heading" class="heading1">
+        FORGOT USERNAME
+      </h1>
+   
+      
+      <div id="Userlogin" class="tabcontent">
+        <!-- <form action="#" class="form"> -->
+          <form class="form" action="/login" method="post">
+
+            <div class="form_div">
+              
+                <p>
+                  Email Id/Mobile No
+                </p>
+                <input type="text" name="username" class="form_input" placeholder="Username">
+            </div>
+
+            <!-- <div class="form_div">
+               
+                <p>
+                  Password
+                </p>
+                <input type="password" name="password" class="form_input" placeholder="Password"><br>
+            </div> -->
+            <p >
+              Security Code
+               </p>
+            <div id="captcha" class="form_div">
+                <div class="preview"></div>
+                <div class="captcha_form"> 
+                    <input type="text" id="captcha_form" class="form_input_captcha" placeholder="Security Code">
+                    <input type="button" class="captcha_refersh">
+                        <i class="fa fa-refresh"></i>
+                </input>
+                </div>
+            </div>
+
+            <input type="submit" class="form_button" value="UPDATE">
+            <div class="bottom">
+              <p class="para">
+                Back To
+        
+                <a href="/">User login</a>
+              </p>
+        
+            </div
+        </form>
+    </div> 
+  </div>
+
+      <!-- <div class="main">
+        <p>
+          Email Id/Mobile No
+        </p>
+        <input type="Username" name="Username" placeholder="Username">
+       
+        <div class="login-form">
+          <div class="captcha">
+            <label for="captcha-input">Security Code</label>
+            <input type="text" id="captcha-form" placeholder="Security Code">
+         
+              
+              <div class="button">
+                <div class="preview"></div>
+                <input type="button" class="captcha-refresh" >
+                <i class="fa fa-refresh"></i>
+              </input>
+              </div>
+           
+          </div>
+         
+        </div>
+      </div> -->
+   
+      <!-- <br><br>
+      <div class="div2">
+
+        <button type="button" name="button">Update</button>
+      </div>
+      <div class="bottom">
+      <p class="para">
+        Back To
+
+        <a href="/">User login</a>
+      </p>
+
+    </div> -->
+
+  
+    <footer>
+      <p>
+       <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+       <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+       <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+       <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+       <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+       <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+       <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img src="/images/pics/linkedin.png" alt=""></a>
+       <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="/images/pics/twitter.png" alt=""></a>
+      </p>
+      <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
+      <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+   </footer>
+</body>
+<script >
+(function(){
+  const fonts = ["bolder"];
+  let captchaValue = "";
+  function gencaptcha()
+  {
+      let value = btoa(Math.random()*1000000000);
+      value = value.substr(0,5 + Math.random()*5);
+      captchaValue = value;
+  }
+
+  function setcaptcha()
+  {
+      let html = captchaValue.split("").map((char)=>{
+          const rotate = -20 + Math.trunc(Math.random()*30);
+          const font = Math.trunc(Math.random()*fonts.length);
+          return`<span
+          style="
+          transform:rotate(${rotate}deg);
+          font-family:${font[font]};
+          "
+         >${char} </span>`;
+      }).join("");
+      document.querySelector(".tabcontent #captcha .preview").innerHTML = html;
+  }
+
+  function initCaptcha()
+  {
+      document.querySelector(".tabcontent #captcha .captcha_refersh").addEventListener("click",function(){
+          gencaptcha();
+          setcaptcha();
+      });
+
+      gencaptcha();
+      setcaptcha();
+  }
+  initCaptcha();
+
+  document.querySelector(".tabcontent .form_button").addEventListener("click",function(){
+      let inputcaptchavalue = document.querySelector(".tabcontent #captcha input").value;
+
+      if (inputcaptchavalue === captchaValue) 
+      {
+          // swal("","Log in","success");
+          alert("Log in success");
+      }
+      else
+      {
+          // swal("Invalid Captcha");
+          alert("Invalid Captcha");
+      }
+  });
+})();
+</script>
+</html>

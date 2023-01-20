@@ -1,0 +1,559 @@
+body {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  margin: 0;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
+}
+/*@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }*/
+.top-container {
+  height: 220px;
+  width: 100%;
+  /* position: relative; */
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  height: 190px;
+}
+
+/* .head img{
+  width: 12%;
+} */
+
+#logo {
+  width: 10%;
+  background-color: rgb(192, 179, 179);
+}
+
+#clg {
+  width: 24%;
+}
+
+.title {
+  text-transform: capitalize;
+  background-color:#755353c7;
+  width: 66%;
+  color:#cbd2cbe0;
+  font-size:18px;
+}
+
+ .navbar {
+  width: 100%;
+  background-color:#2a1e4700;
+  overflow: auto;
+  /* position: absolute; */
+  /* bottom: 0; */
+  display: flex;
+  justify-content: space-around;
+  height: 40px;
+  margin-top: 4px;
+}
+
+.navbar a {
+  width: 150px;
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  /* font-size:17px; */
+  /* background-color: #04AA6D; */
+  text-align: center;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.navbar a:hover {
+  background-color: #3D5656;
+}
+hr {
+  border-style: none;
+  border-top-style: dotted;
+  border-color: #bdbdbd;
+  border-width: 5px;
+  height: 0px;
+  width: 30%
+}
+
+.ii-container {
+  /* background-color: #F0E9D2; */
+  height: 900px;
+  width: auto;
+}
+
+* {
+  box-sizing: border-box
+}
+
+.wish{
+  /* font-size: 20px; */
+  color: #f7f2f2;
+  font-weight: 400;
+  font-style: italic;
+  /* text-align: center; */
+}
+
+
+/* Set height of body and the document to 100% */
+
+/* Style tab links */
+.tablink {
+ 
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 50%;
+  /* border-radius: 8px; */
+  border: 1px  solid;
+  border-bottom: 0px;
+  /* border-color: blue; */
+}
+
+.tablink:hover {
+  background-color: #777;
+    border-radius: 8px;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display: none;
+  /* background-color: #777; */
+  padding: 50px 20px 0 20px;
+  height: 100%;
+  width: 100%;
+}
+
+#grievance {
+  background-color:#bc6c8099;
+}
+
+#employee {
+  background-color: rgb(80 119 157 / 58%);
+}
+
+.navebar {
+  width: 100%;
+  overflow: hidden;
+  background-color:#c96868;
+  /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+.navebar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropbtn {
+  width: 220px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 8px;
+  padding: 14px 16px;
+  background-color: inherit;
+  /* font-family: inherit; */
+  margin: 0;
+}
+
+.navebar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+  background-color:brown;
+}
+
+#myDropdown {
+  
+  position: absolute;
+  background-color:azure;
+  min-width: 92%;
+  min-height: 600px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+#Dropdown {
+  display: none;
+  position: absolute;
+  background-color: #cdffff;
+  min-width: 92%;
+  min-height: 600px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 97.5%;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+/* departments content */
+* {
+  box-sizing: border-box
+}
+
+/* Style the tab */
+.table {
+  float: left;
+  border: 0px solid #ccc;
+  background-color: azure;
+  width: 15%;
+  height: auto;
+}
+
+/* Style the buttons inside the tab */
+.table button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.0s;
+  font-size: 15px;
+}
+
+/* Change background color of buttons on hover */
+.table button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.table button.active {
+  background-color: #df5a5ab5;
+}
+
+/* Style the tab content */
+.tablecontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 80%;
+  border-left: none;
+  height: 550px;
+  background-color: #e1818175;
+  overflow: scroll;
+}
+
+/* assigned complaints start */
+.dropdwn {
+  float: left;
+  overflow: hidden;
+}
+
+.dropbutn {
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 8px;
+  padding: 14px 16px;
+  background-color: inherit;
+  /* font-family: inherit; */
+  margin: 0;
+}
+
+.navebar a:hover, .dropdwn:hover .dropbutn, .dropbutn:focus {
+  background-color: brown;
+}
+
+/* #myDropdown {
+
+  position: absolute;
+  background-color: azure;
+  min-width: 92%;
+  min-height: 600px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+#Dropdown{
+  display: none;
+  position: absolute;
+  background-color: azure;
+  min-width: 92%;
+  min-height: 600px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+} */
+.dropdwn-content {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  background-color: azure;
+  display: block;
+  text-align: left;
+  width: 1200px;
+  height: 550px;
+  margin-bottom: 50px;
+}
+
+.dropdwn-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+/* departments content */
+* {
+  box-sizing: border-box
+}
+
+/* Style the tab */
+.tabe {
+  float: left;
+  border: 0px solid #ccc;
+  background-color: azure;
+  width: 220px;
+  height: auto;
+}
+
+/* Style the buttons inside the tab */
+.tabelinks {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 220px;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.0s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tabe button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tabe button.active {
+  background-color: #df5a5ab5;
+}
+
+/* Style the tab content */
+.tabecontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 80%;
+  border-left: none;
+  height: 500px;
+  background-color: #e1818175;
+  overflow: scroll;
+}
+
+/* EmployeeDropdown */
+#EmployeeDropdown {
+  position: absolute;
+  background-color: azure;
+  min-width: 92%;
+  min-height: 600px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+
+.center1 {
+  margin-top: 0;
+  padding-top: 10px;
+  width: 100%;
+  height: 520px;
+  /* changes */
+  background-color: #9773e0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  -webkit-box-shadow: 17px 20px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 17px 20px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 17px 20px 5px 0px rgba(0, 0, 0, 0.75);
+  /* changes */
+}
+
+.listone h3 {
+  width: 50%;
+
+}
+
+.view {
+  /* margin-right: 30px; */
+  /* width: 200px; */
+  font-weight: bold;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.listone {
+  -webkit-box-shadow: 10px 10px 2px 0px rgba(0,0,0,0.6);
+-moz-box-shadow: 10px 10px 2px 0px rgba(0,0,0,0.6);
+/* box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.6) */
+
+  background-color:rgb(255 5 5 / 41%);
+  margin-left: 80px;
+  width: 70%;
+  display: flex;
+  border: 2px solid black;
+  margin-right: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: hidden;
+  transition: transform 0.4, top 0.4s;
+}
+
+.open-popup {
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.67);
+-moz-box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.67);
+/* box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.67) */
+}
+
+.popup img {
+  width: 100px;
+  margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0 0 0 0.2);
+}
+
+.popup h2 {
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+
+.popup button {
+  width: 50%;
+  margin-top: 10px;
+  padding: 10px 0;
+  background: #6fd649;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0 0 0 0.2);
+}
+
+.popup b{
+  color: #5305ee;
+  /* font-size: 20px; */
+}
+
+.popup p{
+  /* display: flex; */
+  font-size: 20px;
+}
+
+.ft {
+  height: 300px;
+  width: auto;
+  background-color: #dc818187;
+  display: flex;
+  justify-content: space-around;
+  color: #f1ae4c;
+}
+
+.ft div {
+  margin-top: 50px;
+}
+
+.ft a {
+  text-decoration: none;
+    color: white;
+}
+
+.ft-main__item img {
+  height: 150px;
+  width: 150px;
+}
+
+.ft-main__item__media-icon-container img {
+  height: 30px;
+  width: 30px;
+}
+
+
+.alert-warning{
+  /* width:250;
+  height:20px; */
+  /* background-color: red; */
+  text-align: center;
+  font-size: 25px;
+  color: #ffe2a7;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+footer{
+  padding: 20px;
+  text-align: center;
+  background-color:#755353c7;
+  /* margin-top: 50px; */
+  border-radius: 10px;
+  color: rgb(254, 253, 253);
+}
+footer a{
+  padding: 15px;
+  color: rgb(254, 253, 253);
+ 
+}
+footer img{
+  width: 35px;
+
+}
