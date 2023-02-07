@@ -79,6 +79,5 @@ technician Page:
 
 
 
-Profile od each User:
-![image](https://user-images.githubusercontent.com/98757259/216534243-63885d44-e4d0-4bbb-aa0d-fce002508200.png)
-
+Profile of each User:
+![image](https://user-images.githubusercontent.com/98757259/217316769-6cd85a68-f872-4930-8af8-9ccebc80e94a.png)
