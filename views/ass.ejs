@@ -19,43 +19,64 @@
   </style> -->
 </head>
 
-<body style="background-image: url(/images/img1.jpg);">
+<!-- <body style="background-image: url(/images/img1.jpg);"> -->
 
+<body>
   <!-- top container -->
   <div class="top-container">
     <div class="head">
       <img id="logo" src="/images/cdac logo.jpg" alt="">
       <div class="title">
-        <h1> Centre for Development of Advanced Computing Center in North East,SILCHAR</h1>
-        <h3 style="font-size:30px;">Public Grievance Redressal System</h3>
+        <h1 style="font-size:27px;font-weight: 800" ;>Centre For Development of Advanced Computing <br>Center In North
+          East<span style="font-size:32px" ;> (CINE)</span>, Silchar,&nbspAssam-788010</h1>
+        <h3 style="font-size:22px" ;> Public Grievance Redress and Monitoring System(PGRAMS)</h3>
       </div>
-      <img id="clg" src="/images/WhatsApp Image 2022-12-13 at 3.43.23 PM.jpeg" alt="">
+      <img id="clg" src="/images/nit Silchar copy.jpg" alt="">
     </div>
 
     <!-- navbar div -->
-    <div class="navbar">
-      <a href="#"><i class="bi bi-house"></i>&nbsp Home</a>
+
+    <div class="nav">
+      <a href="/<%= profile.typeOfPerson %>/<%= profile.username %>"><i class="bi bi-house"></i>&nbsp Home</a>
+      <div class="dropdowna">
+        <button class="dropbtna"><i class="fa-solid fa-users-gear"></i>&nbsp PGRAMS Officers
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-contenta">
+          <a href="/offHome">Assigning officers</a>
+          <a href="/techHome">Technicians</a>
+        </div>
+      </div>
       <a href="/about"><i class="bi bi-file-earmark-person-fill"></i>&nbsp About</a>
       <a href="/contact"><i class="bi bi-person-lines-fill"></i>&nbsp Contact</a>
-      <a href="/admin"><i class="bi bi-calendar-check"></i> Verify</a>
-      <a href="/<%= profile.username %>/profile"><i class="bi bi-person-fill"></i><%= profile.firstName %></a>
-      <!-- <a href="#"><i class="fa fa-fw fa-user"></i> About</a> -->
-      <a href="/logout"><i class="bi bi-box-arrow-right"></i>&nbsp Logout</a>
+      <a href="https://www.cdac.in/index.aspx?id=edu_acts_NECertificateSilchar">C-DAC Website</a>
+
+      <div class="dropdowna">
+        <button class="dropbtna" style="padding-right:60px;"><i class="fa-solid fa-bars"></i>
+          More
+        </button>
+       
+      <div class="dropdown-contenta">
+            <button><a class="a" href="/<%= profile.username %>/profile"><i
+              class="bi bi-person-fill"></i> My profile</a></button>
+              <a href="/logout"><i class="bi bi-box-arrow-right"></i>&nbsp Logout</a>
+          </div>
+      </div>
+
     </div>
   </div>
   <!-- top container end-->
-  <br>
-  <!-- <br>
-  <br>
-  <hr>
-  <br>
-  <br> -->
+ 
+  
   <!-- middle container start-->
   <div class="ii-container">
-    <button class="tablink" onclick="openPage('grievance', this, 'rgb(124 84 89 / 54%)')" id="defaultOpen"><i
+    <button class="tablink" onclick="openPage('grievance', this, 'rgb(124 84 89 / 54%)')" id="defaultOpen" z"><i
         class="fa-regular fa-rectangle-list"></i>&nbsp <strong> ALL COMPLAINTS</strong></button>
-    <button class="tablink" onclick="openPage('employee', this, 'rgb(42 91 140 / 82%)')"><i
+    <button class="tablink" onclick="openPage('employee', this, 'rgba(124, 84, 89, 0.54)')"><i
         class="bi bi-person-vcard"></i>&nbsp <strong> Details of EMPLOYEES</strong></button>
+        <button class="tablink"><a class="a" href="/admin"><i class="bi bi-calendar-check"></i> Users to Verify</a></button>
+
+ 
 
     <% if(message.length > 0){ %>
     <div class="alert alert-warning">
@@ -64,7 +85,7 @@
     <% } %>
 
     <div id="grievance" class="tabcontent">
-      <h2 class="wish"> Hello <%= profile.firstName %>! These are your list of complaints</h2>
+      <!-- <h2 class="wish"> Hello <%= profile.firstName %>! These are your list of complaints</h2> -->
       <br>
       <div class="navebar">
         <!-- departments dropdown -->
@@ -94,34 +115,44 @@
               <% complaints.forEach((items)=>{ if(items.subject === "electricity"){if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.complaint %></h3>
+                  <p> <%= items.date.toString().substring(0,15) %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
-                      <img src="" alt="">
+                      <img src="images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %> </p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %> </p>
                       <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                       <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
                         <div class="area" id="area">
                           <b>Assigned To:</b> &nbsp; &nbsp;
                           <select id="selectarea" name="assignedTo" class="select">
+                            <option>Choose Technician</option>
                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
-                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <option value="<%= user.username %>"> <%=user.firstName %> <%= user.lastName %>  (<%= user.availability %>)</option>
                             <% }}) %>
                           </select>
                           <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
-                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
-                        <input type="text" name="whyRejectedByOff" id="">
+                        <b>Why to reject:&nbsp;&nbsp;</b>
+                        <select id="selectarea" name="whyRejectedByOff" class="select">
+                          <option>Choose Reason</option>
+
+                          <option value="">Insufficient information</option>
+                          <option value="">Inappropriate behavior</option>
+                          <option value="">Lack of jurisdiction</option>
+                          <option value="">Unfounded complaint</option>
+                          <option value="">Violation of policies</option>
+                          <!-- <option value="">Time limits</option> -->
+                        </select>
                         <button type="submit">Reject</button>
                       </form>
                       <button onclick="closepopup(this)">ok</button>
@@ -139,34 +170,44 @@
               <% complaints.forEach((items)=>{ if(items.subject === "Network"){ if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.complaint %></h3>
+                  <p> <%= items.date.toString().substring(0,15) %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b><%=items.progress %> </p>
                       <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
                         <div class="area" id="area">
                           <b>Assigned To:</b> &nbsp; &nbsp;
                           <select id="selectarea" name="assignedTo" class="select">
+                            <option>Choose Technician</option>
                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
-                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                              <option value="<%= user.username %>"><%=user.firstName %> <%= user.lastName %>  (<%= user.availability %>)</option>
                             <% }}) %>
                           </select>
                           <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
-                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
-                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
-                        <input type="text" name="whyRejectedByOff" id="">
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %>" method="post" class="rejectForm">
+                        <b>Why to reject:&nbsp;&nbsp;</b>
+                        <select id="selectarea" name="whyRejectedByOff" class="select">
+                          <option>Choose Reason</option>
+
+                          <option value="">Insufficient information</option>
+                          <option value="">Inappropriate behavior</option>
+                          <option value="">Lack of jurisdiction</option>
+                          <option value="">Unfounded complaint</option>
+                          <option value="">Violation of policies</option>
+                          <!-- <option value="">Time limits</option> -->
+                        </select>
                         <button type="submit">Reject</button>
                       </form>
                       <button onclick="closepopup(this)">ok</button>
@@ -184,14 +225,14 @@
               <% complaints.forEach((items)=>{ if(items.subject === "furniture"){if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
-
+                  <h3 style="text-transform: capitalize;"><%=items.complaint %></h3>
+                  <p> <%= items.date.toString().substring(0,15) %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
@@ -202,16 +243,25 @@
                         <div class="area" id="area">
                           <b>Assigned To:</b> &nbsp; &nbsp;
                           <select id="selectarea" name="assignedTo" class="select">
+                            <option>Choose Technician</option>
                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
-                              <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
-                              <% }}) %>
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %>  (<%= user.availability %>)</option>
+                            <% }}) %>
                           </select>
                           <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
-                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
-                        <input type="text" name="whyRejectedByOff" id="">
+                        <b>Why to reject:&nbsp;&nbsp;</b>
+                        <select id="selectarea" name="whyRejectedByOff" class="select">
+                          <option>Choose Reason</option>
+                          <option value="">Insufficient information</option>
+                          <option value="">Inappropriate behavior</option>
+                          <option value="">Lack of jurisdiction</option>
+                          <option value="">Unfounded complaint</option>
+                          <option value="">Violation of policies</option>
+                          <!-- <option value="">Time limits</option> -->
+                        </select>
                         <button type="submit">Reject</button>
                       </form>
                       <button onclick="closepopup(this)">ok</button>
@@ -228,35 +278,44 @@
               <% complaints.forEach((items)=>{ if(items.subject === "devicebreakdown"){if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.complaint %></h3>
+                  <p> <%= items.date.toString().substring(0,15) %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                       <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
                         <div class="area" id="area">
                           <b>Assigned To:</b> &nbsp; &nbsp;
                           <select id="selectarea" name="assignedTo" class="select">
+                            <option>Choose Technician</option>
                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                             <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= user.lastName %>  (<%= user.availability %>)</option>
                             <% }}) %>
                           </select>
                           <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
-                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
-                        <input type="text" name="whyRejectedByOff" id="">
-                        <button type="submit">Reject</button>
+                        <b>Why to reject:&nbsp;&nbsp;</b>
+                        <select id="selectarea" name="whyRejectedByOff" class="select">
+                          <option>Choose Reason</option>
+                          <option value="">Insufficient information</option>
+                          <option value="">Inappropriate behavior</option>
+                          <option value="">Lack of jurisdiction</option>
+                          <option value="">Unfounded complaint</option>
+                          <option value="">Violation of policies</option>
+                          <!-- <option value="">Time limits</option> -->
+                        </select> <button type="submit">Reject</button>
                       </form>
                       <button onclick="closepopup(this)">ok</button>
                     </div>
@@ -272,36 +331,45 @@
               <% complaints.forEach((items)=>{ if(items.subject === "water"){ if(items.assigned =="no"&&items.rejectedByOff=="no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.complaint %></h3>
+                  <p> <%= items.date.toString().substring(0,15) %></p>
 
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp; <%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                       <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
                         <div class="area" id="area">
                           <b>Assigned To:</b> &nbsp; &nbsp;
                           <select id="selectarea" name="assignedTo" class="select">
+                            <option>Choose Technician</option>
                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                             <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= user.lastName %>  (<%= user.availability %>)</option>
                             <% }}) %>
                           </select>
                           <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
-                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
-                        <input type="text" name="whyRejectedByOff" id="">
-                        <button type="submit">Reject</button>
+                        <b>Why to reject:&nbsp;&nbsp;</b>
+                        <select id="selectarea" name="whyRejectedByOff" class="select">
+                          <option>Choose Reason</option>
+                          <option value="">Insufficient information</option>
+                          <option value="">Inappropriate behavior</option>
+                          <option value="">Lack of jurisdiction</option>
+                          <option value="">Unfounded complaint</option>
+                          <option value="">Violation of policies</option>
+                          <!-- <option value="">Time limits</option> -->
+                        </select> <button type="submit">Reject</button>
                       </form>
                       <button onclick="closepopup(this)">ok</button>
                     </div>
@@ -317,35 +385,45 @@
               <% complaints.forEach((items)=>{ if(items.subject === "garbage"){if(items.assigned =="no"&&items.rejectedByOff=="no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
-
+                  <h3 style="text-transform: capitalize;"><%=items.complaint %></h3>
+                  <p> <%= items.date.toString().substring(0,15) %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp;<%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                       <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
                         <div class="area" id="area">
                           <b>Assigned To:</b> &nbsp; &nbsp;
                           <select id="selectarea" name="assignedTo" class="select">
+                            <option>Choose Technician</option>
                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                             <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= user.lastName %>  (<%= user.availability %>)</option>
                             <% }}) %>
                           </select>
                           <button type="submit">Assign</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
-                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
-                        <input type="text" name="whyRejectedByOff" id="">
+                        <b>Why to reject:&nbsp;&nbsp;</b>
+                        <!-- <input type="text" name="whyRejectedByOff" id=""> -->
+                        <select id="selectarea" name="whyRejectedByOff" class="select">
+                          <option>Choose Reason</option>
+                          <option value="">Insufficient information</option>
+                          <option value="">Inappropriate behavior</option>
+                          <option value="">Lack of jurisdiction</option>
+                          <option value="">Unfounded complaint</option>
+                          <option value="">Violation of policies</option>
+                          <!-- <option value="">Time limits</option> -->
+                        </select>
                         <button type="submit">Reject</button>
                       </form>
                       <button onclick="closepopup(this)">ok</button>
@@ -362,36 +440,46 @@
               <% complaints.forEach((items)=>{ if(items.subject === "toilets"){if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.complaint %></h3>
+                  <p> <%= items.date.toString().substring(0,15) %></p>
+
 
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21)%></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21)%></p>
                       <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                       <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
                         <div class="area" id="area">
                           <b>Assigned To:</b> &nbsp; &nbsp;
                           <select id="selectarea" name="assignedTo" class="select">
+                            <option>Choose Technician</option>
                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                             <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= user.lastName %> (<%= user.availability %>)</option>
                             <% }}) %>
                           </select>
                           <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
-                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
-                        <input type="text" name="whyRejectedByOff" id="">
-                        <button type="submit">Reject</button>
+                        <b>Why to reject:&nbsp;&nbsp;</b>
+                        <select id="selectarea" name="whyRejectedByOff" class="select">
+                          <option>Choose Reason</option>
+                          <option value="">Insufficient information</option>
+                          <option value="">Inappropriate behavior</option>
+                          <option value="">Lack of jurisdiction</option>
+                          <option value="">Unfounded complaint</option>
+                          <option value="">Violation of policies</option>
+                          <!-- <option value="">Time limits</option> -->
+                        </select> <button type="submit">Reject</button>
                       </form>
                       <button onclick="closepopup(this)">ok</button>
                     </div>
@@ -428,21 +516,21 @@
               items.rejectedByTech == "no" && items.resolvedByCiti == "no" && items.resolvedByTech == "no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.subject %></h3>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Assigned To:&nbsp;&nbsp;</b> <%=items.assignedTo %> </p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                       <form action="/reassignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
-
                       </form>
                       <button onclick="closepopup(this)">ok</button>
                     </div>
@@ -459,18 +547,19 @@
                && items.reassigned =="no")){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.subject %></h3>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Assigned To:&nbsp;&nbsp;</b> <%=items.assignedTo %> </p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                       <% if(items.whyRejetedBytech){ %>
                       <p><b>Why Rejected:&nbsp;&nbsp;</b> <%=items. whyRejetedBytech %> </p>
@@ -479,8 +568,9 @@
                         <div class="area" id="area">
                           <b>Assigned To:</b> &nbsp; &nbsp;
                           <select id="selectarea" name="reassignedTo" class="select">
+                            <option>Choose Technician</option>
                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
-                            <option value="<%= user.username %>"><%=user.firstName %></option>
+                            <option value="<%= user.username %>"><%=user.firstName %> <%=user.lastName %></option>
                             <% }}) %>
                           </select>
                           <button type="submit">Reassign</button>
@@ -502,20 +592,21 @@
               && items.rejectedByTech == "yes"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.subject %></h3>
 
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <p><b>Assigned To:&nbsp;&nbsp;</b> <%=items.reassignedTo %> </p>
                       <button onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
@@ -530,18 +621,18 @@
               <% complaints.forEach((items)=>{ if( items.resolvedByCiti === "yes" && items.resolvedByOff === "no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
+                  <h3 style="text-transform: capitalize;"><%=items.subject %></h3>
 
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
+                      <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%=items.date.toString().substring(0,21) %></p>
                       <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
                       <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
                       <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                       <form action="/doneByOff/<%= items._id %>/<%= assignedBy %>" method="post">
@@ -595,7 +686,8 @@
               <ul>
                 <li class="listone">
                   <h3><%= items.firstName %></h3>
-                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <p style="margin-right: 10px; font-size:20px; color:black; text-transform: uppercase;">
+                    <%= items.availability %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
                     <div class="popup">
@@ -625,7 +717,8 @@
               <ul>
                 <li class="listone">
                   <h3><%= items.firstName %></h3>
-                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <p style="margin-right: 10px; font-size:20px; color: black; text-transform: uppercase;">
+                    <%= items.availability %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
                     <div class="popup">
@@ -655,7 +748,8 @@
               <ul>
                 <li class="listone">
                   <h3><%= items.firstName %></h3>
-                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <p style="margin-right: 10px; font-size:20px; color: black; text-transform: uppercase;">
+                    <%= items.availability %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
                     <div class="popup">
@@ -685,7 +779,8 @@
               <ul>
                 <li class="listone">
                   <h3><%= items.firstName %></h3>
-                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <p style="margin-right: 10px; font-size:20px; color:black; text-transform: uppercase;">
+                    <%= items.availability %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
                     <div class="popup">
@@ -715,7 +810,8 @@
               <ul>
                 <li class="listone">
                   <h3><%= items.firstName %></h3>
-                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <p style="margin-right: 10px; font-size:20px; color:black; text-transform: uppercase;">
+                    <%= items.availability %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
                     <div class="popup">
@@ -745,7 +841,8 @@
               <ul>
                 <li class="listone">
                   <h3><%= items.firstName %></h3>
-                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <p style="margin-right: 10px; font-size:20px; color: black;text-transform: uppercase;">
+                    <%= items.availability %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
                     <div class="popup">
@@ -775,7 +872,8 @@
               <ul>
                 <li class="listone">
                   <h3><%= items.firstName %></h3>
-                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <p style="margin-right: 10px; font-size:20px; color: black; text-transform: uppercase;">
+                    <%= items.availability %></p>
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
                     <div class="popup">
@@ -804,29 +902,25 @@
       <!-- employee tab end -->
     </div>
     <!-- middle container end -->
-    <br>
-    <br>
-    <hr>
-    <br>
-    <br>
+
     <!-- bottom container -->
     <footer>
-            <p>
-                <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
-                <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
-                <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
-                <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
-                <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
-                <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
-                <a
-                    href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img
-                        src="/images/pics/linkedin.png" alt=""></a>
-                <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
-                        src="/images/pics/twitter.png" alt=""></a>
-            </p>
-            <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
-            <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
-        </footer>
+      <p>
+        <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+        <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+        <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+        <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+        <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+        <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+        <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img
+            src="/images/pics/linkedin.png" alt=""></a>
+        <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
+            src="/images/pics/twitter.png" alt=""></a>
+      </p> <br>
+      <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p> <br>
+      <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p><br>
+    </footer>
+
     <!-- bottom container -->
 
     <script type="text/javascript" src="/js/Assigning.js"></script>

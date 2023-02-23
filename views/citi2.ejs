@@ -18,25 +18,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
-<body style="background-image: url(/images/img1.jpg);">
+<!-- <body style="background-image: url(/images/img1.jpg);"> -->
     <!-- start of heading and nav -->
+    <body>
     <div class="top-container">
         <div class="head">
             <img id="logo" src="/images/cdac logo.jpg" alt="">
             <div class="title">
-                <h1> Centre for Development of Advanced Computing Center in North East,SILCHAR</h1>
-                <h3 style="font-size:30px;">Public Grievance Redressal System</h3>
+                <h1 style="font-size:27px;font-weight: 800" ;>Centre For Development of Advanced Computing <br>Center In North
+                    East<span style="font-size:32px" ;> (CINE)</span>, Silchar,&nbspAssam-788010</h1>
+              <h3 style="font-size:22px" ;> Public Grievance Redress and Monitoring System(PGRAMS)</h3>
             </div>
-            <img id="clg" src="/images/WhatsApp Image 2022-12-13 at 3.43.23 PM.jpeg" alt="">
+            <img id="clg" src="/images/nit Silchar copy.jpg" alt="">
         </div>
-        <nav>
-            <a href=""><i class="bi bi-house"></i> Home</a>
-            <a href="/about" class="nav"><i class="bi bi-person-lines-fill"></i> About</a>
-            <a href="/contact" class="nav"><i class="bi bi-file-earmark-person-fill"></i> Contact Us</a>
-            <a href="/<%= user.username %>/profile" class="nav"><i class="fa-solid fa-user"></i>
-                <%= user.firstName %></a>
-            <a href="/logout"><i class="bi bi-box-arrow-right"></i> logout</a>
-        </nav>
+          <div class="nav">
+            <a href=""><i class="bi bi-house"></i>&nbsp Home</a>
+            <div class="dropdown">
+              <button class="dropbtn"><i class="fa-solid fa-users-gear"></i>&nbsp PGRAMS Officers
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/offHome">Assigning officers</a>
+                <a href="/techHome">Technicians</a>
+              </div>
+            </div>
+            <a href="/about"><i class="bi bi-file-earmark-person-fill"></i>&nbsp About</a>
+            <a href="/contact"><i class="bi bi-person-lines-fill"></i>&nbsp Contact</a>
+            <a href="https://www.cdac.in/index.aspx?id=edu_acts_NECertificateSilchar">C-DAC website</a>
+
+            <div class="dropdown">
+                <button class="dropbtn" style="padding-right:60px;"><i class="fa-solid fa-bars"></i>
+                  More
+                </button>
+                  <div class="dropdown-content">
+                    <button><a class="a" href="/<%= user.username %>/profile"><iclass="bi bi-person-fill"></iclass=> My profile</a></button>
+                    <a href="/logout"><i class="bi bi-box-arrow-right"></i>&nbsp Logout</a>
+                  </div>
+            </div>
+
+
+           </div>
         <!-- ending of heading and nav -->
         <!-- start of sidebar of mid -->
         <div class="mid">
@@ -96,9 +117,9 @@
                                     <option value="broken furniture">Furniture</option>
                                     <option value="other">other</option>
                                 </select></p>
-                            <p>specify the complaint: &nbsp; &nbsp;<textarea name="complaint" id="" cols="40"
+                            <p>Specify the complaint: &nbsp; &nbsp;<textarea name="complaint" id="" cols="40"
                                     rows="2"></textarea></p>
-                            <p>Upload apic of broken device / situation to be rectified : &nbsp; &nbsp; <input
+                            <p>Upload a picture of the issue / Situation to be rectified : &nbsp; &nbsp; <input
                                     type="file" name="brokenImg" id=""></p>
                             <p class="sr"><button type="submit">submit</button> <button type="reset">reset</button></p>
                         </div>
@@ -133,9 +154,9 @@
                                     <option value="brokenapparatus">broken lab apparatus</option>
                                     <option value="other">other</option>
                                 </select></p>
-                            <p>specify the complaint: &nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
+                            <p>Specify the complaint: &nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
                                     rows="2"></textarea></p>
-                            <p>Upload apic of broken device / situation to be rectified: &nbsp; &nbsp;<input type="file"
+                            <p>Upload a picture of the issue / Situation to be rectified: &nbsp; &nbsp;<input type="file"
                                     name="brokenImg" id=""></p>
                             <p class="sr"><button type="submit">submit</button> <button type="reset">reset</button></p>
                         </div>
@@ -176,9 +197,9 @@
 
                                     <option value="other">other</option>
                                 </select></p>
-                            <p>specify the complaint:&nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
+                            <p>Specify the complaint:&nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
                                     rows="2"></textarea></p>
-                            <p>Upload apic of broken device / situation to be rectified :&nbsp; &nbsp;<input type="file"
+                            <p>Upload a picture of the issue / Situation to be rectified :&nbsp; &nbsp;<input type="file"
                                     name="brokenImg" id=""></p>
                             <p class="sr"><button type="submit">submit</button> <button type="reset">reset</button></p>
                         </div>
@@ -218,9 +239,9 @@
                                     <option value="broken furniture">broken furniture</option>
                                     <option value="other">other</option>
                                 </select></p>
-                            <p>specify the complaint:&nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
+                            <p>Specify the complaint:&nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
                                     rows="2"></textarea></p>
-                            <p>Upload apic of broken device / situation to be rectified: &nbsp; &nbsp; <input
+                            <p>Upload a picture of the issue / Situation to be rectified: &nbsp; &nbsp; <input
                                     type="file" name="brokenImg" id=""></p>
                             <p class="sr"><button type="submit">submit</button> <button type="reset">reset</button></p>
                         </div>
@@ -249,9 +270,9 @@
                                     <option value="broken furniture">broken furniture</option>
                                     <option value="other">other</option>
                                 </select></p>
-                            <p>specify the complaint:&nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
+                            <p>Specify the complaint:&nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
                                     rows="2"></textarea></p>
-                            <p>Upload apic of broken device / situation to be rectified:&nbsp; &nbsp; <input type="file"
+                            <p>Upload a picture of the issue/ Situation to be rectified:&nbsp; &nbsp; <input type="file"
                                     name="brokenImg" id=""></p>
                             <p class="sr"><button type="submit">submit</button> <button type="reset">reset</button></p>
                         </div>
@@ -281,9 +302,9 @@
                                     <option value="broken furniture">broken furniture</option>
                                     <option value="other">other</option>
                                 </select></p>
-                            <p>specify the complaint:&nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
+                            <p>Specify the complaint:&nbsp; &nbsp; <textarea name="complaint" id="" cols="40"
                                     rows="2"></textarea></p>
-                            <p>Upload apic of broken device / situation to be rectified:&nbsp; &nbsp; <input type="file"
+                            <p>Upload a picture of the issue / Situation to be rectified:&nbsp; &nbsp; <input type="file"
                                     name="brokenImg" id=""></p>
                             <p class="sr"><button type="submit">submit</button> <button type="reset">reset</button></p>
 
@@ -306,19 +327,22 @@
                         <ul>
                             <li class="listone">
                                 <h3><%= item.subject %></h3>
+                                <p> <%= item.date.toString().substring(0,15) %></p>
                                 <div>
                                     <button onclick="openpopup(this)" id="btn" class="view">view</button>
                                     <div class="popup">
                                         <img src="/images/ddd.jpg" alt="">
                                         <h2> Details of Complaint </h2>
-                                        <p><b>Complaint Id:</b>&nbsp;&nbsp; <%= item._id %></p>
-                                        <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;
+                                        <p><b>Complaint Id:</b>&nbsp;&nbsp; <%= item.complaintId %></p>
+                                        <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;
                                             <%= item.date.toString().substring(0,21) %></p>
                                         <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
                                         <p><b>Specific Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
                                         <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
-                                        <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
+                                        <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%= item.subject %></p>
                                         <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
+                                        <p><b>Assigned To:&nbsp;&nbsp;</b> <%=item.assignedTo %> </p>
+                                        <!-- <p><b>Assigned To:&nbsp;&nbsp;</b> <%=assigned %> </p> -->
                                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%= item.progress %> </p>
                                         <% if(item.whyRejectedByOff){ %>
                                         <p style="color: crimson;"><b>Why Rejected by Officer:&nbsp;&nbsp;</b>
@@ -353,18 +377,19 @@
                                 <h3 data-1="BH6" ,data-2="6042" data-3="regarding failure of ac" , data-4="">
                                     <%= item.subject %>
                                 </h3>
+                                <p> <%= item.date.toString().substring(0,15) %></p>
                                 <div>
                                     <button class="view" onclick="openpopup(this)">View</button>
                                     <div class="popup">
                                         <img src="images/ddd.jpg" alt="">
                                         <h2> Details of Complaint </h2>
-                                        <p><b>Complaint Id:</b>&nbsp;&nbsp; <%= item._id %></p>
-                                        <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;
+                                        <p><b>Complaint Id:</b>&nbsp;&nbsp; <%= item.complaintId %></p>
+                                        <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;
                                             <%= item.date.toString().substring(0,21) %></p>
                                         <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
                                         <p><b>Specific Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
                                         <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
-                                        <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
+                                        <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%= item.subject %></p>
                                         <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
                                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%= item.progress %> </p>
                                         <% if(item.fixedImg){ %>
@@ -376,10 +401,9 @@
                                         <form action="/doneByCiti/<%= item._id %>/<%= user.username %>" method="post">
                                             <button type="submit">Mark as done</button>
                                         </form>
-                                        <button type="button" onclick="closepopup(this)"> ok</button>
                                             <button type="submit" >
-                                            <a href="/pdfs/users.pdf" download style="text-decoration: underline;">Download Pdf</a></button>
-                                        
+                                            <a href="/pdfs/users.pdf" download style="text-decoration: underline;">Download PDF</a></button>
+                                            <button type="button" onclick="closepopup(this)"> ok</button>
                                         <!-- <a href="/users.pdf" download style="text-decoration: underline;">Download Pdf</a> -->
                                     </div>
                                     <button class="view" onclick="openpopup1(this)">have issue</button>

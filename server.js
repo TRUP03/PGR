@@ -41,7 +41,7 @@ app.use(passport.session());
 //     useNewUrlParser: true,  useUnifiedTopology: true
 // }).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
-//mongoose connect
+// mongoose connect
 mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err);});
 
 passport.use(userModel.createStrategy());
@@ -61,6 +61,47 @@ const upload = multer({
 
 app.post('/', upload,(req, res) => {
     const username = req.body.username;
+    const age = req.body.age;
+    const firstname = req.body.firstName;
+    const lastname = req.body.lastName;
+    const originalPass = req.body.password;
+    const confirmPass = req.body.confirmPass;
+    const mobile = req.body.mobile;
+    const adharNo = req.body.adharNo;
+    const password = req.body.password;
+    var reg = /[a-zA-Z]/g;
+    if(mobile.length!=10 || adharNo.length!=12 || confirmPass!=originalPass || password.length<8 ||!req.file || !reg.test(firstname) || !reg.test(lastname) || age>99){
+       const vec = [];
+        if(mobile.length!=10) 
+        vec.push("Enter Valid mobile No ");
+
+        if(age>99) 
+        vec.push("Enter Valid age");
+
+        if(!reg.test(firstname)) 
+        vec.push("first-name should contains only letters");
+
+        if(!reg.test(lastname)) 
+        vec.push("Last-name should contains only letters");
+
+        if(adharNo.length!=12)
+        vec.push(" Enter Valid Identity No ");
+
+        if(confirmPass!=originalPass)
+        vec.push(" Password not Matched ");
+
+        if(password.length<8)
+        vec.push(" Password is weak ");
+
+        if(!req.file)
+        vec.push(" Select Identity Card ");
+
+        req.flash('message',vec);
+       res.redirect('/registration');
+    }
+    
+    
+else{
     const userno = new userModel({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -72,32 +113,6 @@ app.post('/', upload,(req, res) => {
         age:req.body.age,
         typeOfPerson: req.body.typeOfPerson
     });
-    const originalPass = req.body.password;
-    const confirmPass = req.body.confirmPass;
-    const mobile = req.body.mobile;
-    const adharNo = req.body.adharNo;
-    const password = req.body.password;
-    if(mobile.length!=10)
-    {
-       req.flash('message','Enter Valid mobile No');
-       res.redirect('/registration');
-    }
-    if(adharNo.length!=12)
-    {
-       req.flash('message','Enter Valid Identity No');
-       res.redirect('/registration');
-    }
-    if(confirmPass!=originalPass)
-    {
-       req.flash('message','Password not Matched!');
-       res.redirect('/registration');
-    }
-    if(password.length<8)
-    {
-       req.flash('message','Password is weak');
-       res.redirect('/registration');
-    }
-else{
     userModel.register(userno, req.body.password, (err, user) => {
         if (err) {
             console.log(err);
@@ -179,7 +194,7 @@ app.post('/login', (req, res) => {
             });
         }
         else if(req.body.inputCaptcha != req.body.captch){
-            req.flash('message','Wrong Captcha');
+            req.flash('message','Invalid Captcha');
             res.redirect('/login');
         }
     });
@@ -256,12 +271,14 @@ app.get('/status', (req, res) => {
 });
 app.post('/status', (req, res) => {
     const id = req.body.statusId;
-    citizenModel.findById(id,(err,found)=>{
-        if(err){
-            req.flash('message','Wrong complaint Id!!');
+    citizenModel.findOne({complaintId:id},(err,found)=>{
+        if(err)console.log(err);
+       else if(!found){
+            req.flash('message','Invalid Complaint Id!!');
             res.redirect('/status');
         }else{
         userModel.findOne({username:found.assignedTo},(err,foundUser)=>{
+            
             if(err) console.log(err);
             else{
                 res.render('status',{complaint:found,assignedTo:foundUser,message:req.flash('message')});
@@ -295,7 +312,7 @@ app.use(assignRouter);
 app.use(techRouter);
 app.use(profileRouter);
 
-const port = process.env.PORT;
+const port = process.env.PORT||3000;
 app.listen(port, () => {
     console.log('Server running at port 3000');
 });

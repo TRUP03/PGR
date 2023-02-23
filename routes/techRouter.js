@@ -29,7 +29,7 @@ router.get('/technician/:username', (req, res) => {
                     message: req.flash('message')
                 });
             }
-        });
+        }).sort({ date: -1 });
     } else {
         res.redirect('/');
     }
@@ -94,44 +94,78 @@ router.post('/rejectByTech/:id', (req, res) => {
 router.post('/resolved/:id/:username', upload, (req, res) => {
     const id = req.params.id;
     const username = req.params.username;
-    const fixedImg = req.file.filename;
-    complaintModel.findByIdAndUpdate({
-            _id: id
-        }, {
-            progress: "Complaint has been Resolved!",
-            resolvedByTech: "yes",
-            fixedImg: fixedImg
-        },
-        (err, found) => {
-            if (err) console.log(err);
-            else {
-                userModel.findById(found.complaintBy,(err,citizen)=>{
-                    if(err) console.log(err)
-                    else{
-                        const data = {
-                            item: found,citizen:citizen
-                        }
-                        const filepathName = path.resolve(__dirname, '../views/pdf.ejs');
-                        const htmlString = fs.readFileSync(filepathName).toString();
-                        let options = {
-                            format: 'Letter'
-                        }
-                        const ejsData = ejs.render(htmlString, data);
-                        pdf.create(ejsData, options).toFile('public/pdfs/users.pdf', (err, response) => {
-                            if (err) console.log(err);
-                            else {
-                                req.flash('message', 'Complaint has been Resolved!');
-                                res.redirect('/technician/' + username);
-                            
+    if(!req.file){
+        req.flash('message', 'Select The Image of Fixed Problem!');
+        res.redirect('/technician/' + username);
+    }
+    else{
+        const fixedImg = req.file.filename;
+        complaintModel.findByIdAndUpdate({
+                _id: id
+            }, {
+                progress: "Complaint has been Resolved!",
+                resolvedByTech: "yes",
+                fixedImg: fixedImg
+            },
+            (err, found) => {
+                if (err) console.log(err);
+                else {
+                    userModel.findById(found.complaintBy,(err,citizen)=>{
+                        if(err) console.log(err)
+                        else{
+                            const data = {
+                                item: found,citizen:citizen
                             }
-                        })
-                    }
-                    
-                })
-            }
-
-        });
+                            const filepathName = path.resolve(__dirname, '../views/pdf.ejs');
+                            const htmlString = fs.readFileSync(filepathName).toString();
+                            let options = {
+                                format: 'Letter'
+                            }
+                            const ejsData = ejs.render(htmlString, data);
+                            pdf.create(ejsData, options).toFile('public/pdfs/users.pdf', (err, response) => {
+                                if (err) console.log(err);
+                                else {
+                                    req.flash('message', 'Complaint has been Resolved!');
+                                    res.redirect('/technician/' + username);
+                                
+                                }
+                            })
+                        }
+                        
+                    })
+                }
+    
+            });
+    }
+   
 });
+
+// router.post('/filter/:id',(req,res)=>{
+//     const id = req.params.id;
+//     const place = req.body.building;
+//     const topic = req.body.subject;
+//     complaintModel.find({},(err,found)=>{
+//         if(err) console.log(err);
+//         if (req.isAuthenticated()) {
+//             const data = {};
+//             data.user = req.user;
+//             complaintModel.find({}, (err, found) => {
+//                 if (err) console.log(err);
+//                 else {
+//                     res.render('technician', {
+//                         user: data.user,
+//                         complaint: found,
+//                         message: req.flash('message'),
+//                         place:place, topic:topic
+//                     });
+//                 }
+//             }).sort({ date: -1 });
+//         } else {
+//             res.redirect('/');
+//         }
+//     })
+// })
+
 router.use(flash());
 router.use(bodyParser.urlencoded({
     extended: true

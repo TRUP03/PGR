@@ -10,59 +10,73 @@
 
 
 body {
+  margin: 0;
   position: relative;
-/* width: 1470px; */
-  height:100%;
-  /* width:100%; */
-  margin:0;
-
-  /* background-image:url(img1.jpg); */
   background-repeat: no-repeat;
-  background-size: 100% 100% ;
+  background-size: 100% 200%;
 
 }
 .head{
-  display: flex;
-justify-content: space-between;
-text-align: center;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color:black;
+    display: flex;
+ justify-content: space-between;
+ text-align: center;
 }
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h3{
+  /* margin:10px 0 0 0; */
+  margin: auto;
+/* color:white; */
+ font-size: 23px;
+  text-align: center;
+}
+.head h3{
+  position:relative ;
+  top: -10px;
+  color:black;
+}
 .head img{
-  width:10%;
-
-
+    width:10%;
 }
 #logo{
 
-  background-color: rgb(192, 179, 179);
+    background-color: rgb(192, 179, 179);
 }
 #clg{
-  width: 20%;
+    width: 20%;
 }
 .title{
-  background-color:#755353c7;
-  width: 70%;
-  color:#cbd2cbe0;
+  background-color:#bea0a0;
+    width: 70%;
 }
-
-.home {
-  /* color:white; */
-  height: 60px;
-  text-decoration:none;
-  background-color: #3a475f78;
+.nav{
+     
+  width: 100%;
+  background-color:#6e0747;
+  /* position: absolute; */
+  /* bottom: 0; */
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  height: 40px;
+  margin-top: 4px;
+
 }
-.home a{
-  color: white;
-  font-weight: bold;
-  font-size:20px;
-  text-decoration: none;
-}
-.home img{
-  width:35px;
-  height: 35px;
+.nav a{
+ margin: auto;
+  width: 150px;
+float: left;
+color: white;
+text-decoration: none;
+font-size:18px;
+font-weight: 600;
+text-align: center;
+text-transform: uppercase;
+font-family: 'Times New Roman', Times, serif;
 }
 
 div.main{
@@ -73,25 +87,30 @@ div.main{
   margin: 30px auto 0px auto;
   display: flex;
   justify-content: center;
+  margin-top: 4px;
 }
-h2{
+#all h2{
   text-align: center;
-  padding: 20px;
+  /* padding: 20px; */
   /* font-family: sans-serif; */
+}
+#all{
+  background-color:#e2c7c7;
+  margin-bottom: 0;
 }
 div.register{
   /* background-color: rgba(212, 140, 147, 0.471); */
   -webkit-box-shadow: 15px 18px 8px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 15px 18px 8px 0px rgba(0,0,0,0.75);
   box-shadow: 15px 18px 8px 0px rgba(0,0,0,0.75);
-  background-color: rgba(57, 53, 53, 0.5);
+  background-color: rgb(32 26 26 / 50%);
   width:80%;
-  height:95%;
+  height:85%;
   font-size:18px;
   border-radius: 10px;
   border:1px solid rgba(255,255,255, 0.3);
   box-shadow:2px 2px 15px rgba(0, 0, 0, 0.3);
-  color:#f5f6f9;
+  color:black;padding-top: 10px;
 }
 
 
@@ -152,10 +171,9 @@ height: 100px;
 
 
 #submit:hover{
-  background-color:rgba(250,100, 0, 0.8);
+  background-color:rgb(143 125 113 / 80%);
   font-style: italic;
   border-radius: 15px;
-
 }
 
 #submit{
@@ -172,7 +190,7 @@ padding-left:180px;
   font-size: 20px;
   border:none;
   border-radius: 5px;
-  background-color: rgba(250,100, 0, 0.8);
+  background-color: rgb(73 64 58 / 80%);
   color:#fff;
   cursor: pointer;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
@@ -251,6 +269,78 @@ hr {
   border-width: 5px;
   height: 0px;
   width: 30%
+}
+.title h3{
+  font-weight:bold;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn{
+  font-size: 18px;
+  border: none;
+  outline: none;
+  color: white;
+  /* padding: 14px 16px; */
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+  
+}
+.dropbtn,.dropdown{
+  margin: auto;
+  /* width: 150px; */
+float: left;
+color: white;
+text-decoration: none;
+font-size:18px;
+font-weight: 600;
+text-align: center;
+text-transform: uppercase;
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  /* background-color: red; */
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  margin-top:20px;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.register h2{
+  text-align: center;
+  color: #461616;
+}
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  font-size: 15px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-transform:none ;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 

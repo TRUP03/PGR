@@ -21,7 +21,8 @@ const citizenSchema = new mongoose.Schema({
         required:"Put Detail of a complaint"
     },
     brokenImg: {
-        type:String
+        type:String,
+        required:"Put Details"
     },
      date: { 
          type: Date, 
@@ -31,12 +32,15 @@ const citizenSchema = new mongoose.Schema({
         type:"string",
         default:'Complaint Lodged!'
     },
+    complaintId:{
+        type:String
+    },
     assigned:{
         type:"string",
         default:'no'
     },
      assignedTo :{
-         type:String
+         type:String,
      },
      assignedBy :{
          type:String
@@ -97,7 +101,8 @@ const citizenSchema = new mongoose.Schema({
      resolvedTime:{
         type: Date, 
         default: Date()
-     }
+     },
+     
 
 });
 

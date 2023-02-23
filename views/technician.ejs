@@ -10,33 +10,47 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
-<body style="background-image:url(/images/img1.jpg);">
+<!-- <body style="background-image:url(/images/img1.jpg);"> -->
 
-
+<body>
   <div class="head">
     <img id="logo" src="/images/cdac logo.jpg" alt="">
     <div class="title">
-      <h1> Centre for Development of Advanced Computing Center in North East SILCHAR</h1>
-      <h3 style="font-size:30px;"> Public Grievance Redressal System</h3>
+      <h1 style="font-size:27px;font-weight: 800" ;>Centre For Development of Advanced Computing <br>Center In North
+        East<span style="font-size:32px" ;> (CINE)</span>, Silchar,&nbspAssam-788010</h1>
+      <h3 style="font-size:22px" ;> Public Grievance Redress and Monitoring System(PGRAMS)</h3>
     </div>
-    <img id="clg" src="/images/WhatsApp Image 2022-12-19 at 3.45.10 PM.jpeg" alt="">
-  </div>
-  <div class="navbar">
-
-    <a href="" class="nav"><i class="bi bi-house"></i>Home</a>
-    <a href="http://www.nits.ac.in/" class="nav"><i class="bi bi-person-lines-fill"></i> About Us</a>
-    <a href="/contact" class="nav"><i class="bi bi-file-earmark-person-fill"></i> Contact Us </a>
-
-    <a href="/<%= user.username %>/profile" class="nav"><i class="fa-solid fa-user"></i> <%= user.firstName %></a>
-
-    <a href="/logout" class="nav">LOGOUT</a>
-
+    <img id="clg" src="/images/nit Silchar copy.jpg" alt="">
   </div>
 
+  <div class="nav">
+    <a href="/"><i class="bi bi-house"></i>&nbsp Home</a>
+    <div class="dropdown">
+      <button class="dropbtn"><i class="fa-solid fa-users-gear"></i>&nbsp PGRAMS Officers
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/offHome">Assigning officers</a>
+        <a href="/techHome">Technicians</a>
+      </div>
+    </div>
+    <a href="/about"><i class="bi bi-file-earmark-person-fill"></i>&nbsp About</a>
+    <a href="/contact"><i class="bi bi-person-lines-fill"></i>&nbsp Contact</a>
+    <a href="https://www.cdac.in/index.aspx?id=edu_acts_NECertificateSilchar">C-DAC Website</a>
+    <div class="dropdown">
+      <button class="dropbtn" style="padding-right:60px;"><i class="fa-solid fa-bars"></i>
+        More
+      </button>
+        <div class="dropdown-content">
+          <button><a class="a" href="/<%= user.username %>/profile"><iclass="bi bi-person-fill"></iclass=> My profile</a></button>
+          <a href="/logout"><i class="bi bi-box-arrow-right"></i>&nbsp Logout</a>
+        </div>
+    </div>
+  </div>
   <% if(message.length > 0){ %>
   <div class="alert">
     <%= message %>
@@ -50,23 +64,28 @@
         <button id="toptwo">Accepted Complaints</button>
       </div>
 
+
+
       <!-- start of center1 -->
       <div class="center1" id="center1">
         <% complaint.forEach((item)=>{if((user.username === item.assignedTo && item.acceptedBytech=="no"
-         && item.rejectedByTech=="no")||(user.username === item.reassignedTo && item.acceptedBytech=="no" && item.rejectedByTech=="no")){%>
+         && item.rejectedByTech=="no")||(user.username === item.reassignedTo && item.progress=="complaint has been reassigned")){%>
+
+
+
         <ul id="ulcenter1">
           <li class="listone">
-            <button onclick="openpopup(this)" class="view"><%= item.subject %> </button>
+            <button onclick="openpopup(this)" class="view"><%= item.complaint %> <p>
+                (<%= item.date.toString().substring(0,15) %>)</p></button>
             <div class="popup">
               <h2><%= item.subject %> </h2>
-              <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%= item.date.toString().substring(0,21) %></p>
+              <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%= item.date.toString().substring(0,21) %></p>
               <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
               <p><b>Hostel Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
               <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
-              <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
+              <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%= item.subject %></p>
               <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
               <p><b>Complaint Progress</b> &nbsp;&nbsp;<%= item.progress %></p>
-              <p><b>Contact of complaint raised person:</b> &nbsp;&nbsp;9912912XXX</p>
               <p><b>Photo of the complaint:</b> &nbsp;&nbsp;
                 <a href="/brokenImg/<%= item.brokenImg %>" download="<%= item._id %>"
                   style="text-decoration: underline;">download Image here</a></p>
@@ -75,11 +94,17 @@
                 <form action="/acceptByTech/<%= item._id %>" method="post" style="margin-top: 0.5rem;">
                   <button type="submit">Accept</button>
                 </form>
+                
                 <form action="/rejectByTech/<%= item._id %>" method="post">
-                  <label for="rejecct">Give reason of rejection:</label>
-                  <input type="text" name="whyRejetedBytech" id="reject">
+                  <label for="rejecct" style="font-size:20px;">Give reason of rejection:</label>
+                  <select id="selectarea" name="whyRejetedBytech" class="select" id="reject">
+                    <option value="">select</option>
+                    <option value="">Can't come better to assign someone else</option>
+                    <option value="">Not within the Scope</option>
+                  </select>
                   <button type="submit">Reject</button>
                 </form>
+
               </div>
             </div>
           </li>
@@ -92,19 +117,20 @@
         <% complaint.forEach((item)=>{if((user.username === item.assignedTo && item.acceptedBytech=="yes" 
         && item.resolvedByTech == "no") || (user.username === item.reassignedTo && item.acceptedBytech=="yes" 
         && item.resolvedByTech == "no")){%>
+
         <ul id="ulcenter2">
           <li class="listtwo">
-            <button onclick="openpopup2(this)" class="view"><%= item.subject %> </button>
+            <button onclick="openpopup2(this)" class="view"><%= item.complaint %><p>
+                (<%= item.date.toString().substring(0,15) %>)</p></button>
             <div class="popup">
               <h2><%= item.subject %> </h2>
-              <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%= item.date.toString().substring(0,21) %></p>
+              <p><b>Date &Time of Registration:</b>&nbsp;&nbsp;<%= item.date.toString().substring(0,21) %></p>
               <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
               <p><b>Hostel Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
               <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
-              <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
+              <p><b>Subject of the complaint:</b>&nbsp;&nbsp;<%= item.subject %></p>
               <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
               <p><b>Complaint Progress</b> &nbsp;&nbsp;<%= item.progress %></p>
-              <p><b>Contact of complaint raised person:</b> &nbsp;&nbsp;9912912XXX</p>
               <p><b>Photo of the complaint:</b> &nbsp;&nbsp;
                 <a href="/brokenImg/<%= item.brokenImg %>" download="<%= item._id %>"
                   style="text-decoration: underline;">download Image here</a></p>
@@ -116,10 +142,10 @@
               </p>
               <% } %>
               <form action="/resolved/<%= item._id %>/<%= user.username %>" method="post" style="margin-top: 0.5rem;"
-              enctype="multipart/form-data">
-              <p><b>Upload Photo of Fixed Image:</b> &nbsp;&nbsp;<input type="file" name="fixedImg" id=""></p>
-              <input type="hidden" name="resolvedTime" id="">
-              <button type="submit">Resolved</button>
+                enctype="multipart/form-data">
+                <p><b>Upload Photo of Fixed Image:</b> &nbsp;&nbsp;<input type="file" name="fixedImg" id=""></p>
+                <input type="hidden" name="resolvedTime" id="">
+                <button type="submit">Resolved</button>
               </form>
               <button type="button" onclick="closepopup(this)" style="margin-top: 10px;">Ok</button>
             </div>
@@ -144,10 +170,11 @@
           src="/images/pics/linkedin.png" alt=""></a>
       <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
           src="/images/pics/twitter.png" alt=""></a>
-    </p>
-    <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
-    <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+    </p> <br>
+    <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p> <br>
+    <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p><br>
   </footer>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="/js/tech.js"></script>
