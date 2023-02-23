@@ -402,9 +402,7 @@ hr {
 }
 
 .listone {
-  -webkit-box-shadow: 10px 10px 2px 0px rgba(0,0,0,0.6);
--moz-box-shadow: 10px 10px 2px 0px rgba(0,0,0,0.6);
-/* box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.6) */
+ 
 
   background-color:#e3afbc;
   margin-left: 80px;
@@ -436,9 +434,7 @@ hr {
   visibility: visible;
   top: 50%;
   transform: translate(-50%, -50%) scale(1);
-  -webkit-box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.67);
--moz-box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.67);
-/* box-shadow: 15px 15px 5px 0px rgba(0,0,0,0.67) */
+  
 }
 
 .popup img {
@@ -610,10 +606,6 @@ text-align: center;
 text-transform: uppercase;
 }
 
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  /* background-color: red; */
-}
 
 /* Dropdown content (hidden by default) */
 .dropdown-contenta {
