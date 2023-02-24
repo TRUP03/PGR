@@ -59,8 +59,7 @@ router.post('/resetPass/:id', (req, res, next) => {
 let mailTransporter = nodemailer.createTransport({
     service: 'Gmail',
     auth:{
-        user: "trupteeundre49@gmail.com",
-        pass: "Truptee@123"
+        
     }
 });
 router.post('/forgotPass', (req, res, next) => {
