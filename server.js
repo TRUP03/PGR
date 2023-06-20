@@ -37,12 +37,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// mongoose.connect(process.env.MONGODB_ON, {
-//     useNewUrlParser: true,  useUnifiedTopology: true
-// }).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
+mongoose.connect(process.env.MONGODB_ON, {
+    useNewUrlParser: true,  useUnifiedTopology: true
+}).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
 // mongoose connect
-mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err);});
+// mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err);});
 
 passport.use(userModel.createStrategy());
 passport.serializeUser(userModel.serializeUser());
@@ -312,7 +312,7 @@ app.use(assignRouter);
 app.use(techRouter);
 app.use(profileRouter);
 
-const port = process.env.PORT||3000;
+const port = process.env.PORT;
 app.listen(port, () => {
     console.log('Server running at port 3000');
 });
