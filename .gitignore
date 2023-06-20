@@ -1,3 +1,6 @@
 node_modules
 .env
 dummycode
+mail.js
+mail2.js
+testMsg.js

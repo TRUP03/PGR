@@ -37,12 +37,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// mongoose.connect(process.env.MONGODB_ON, {
-//     useNewUrlParser: true,  useUnifiedTopology: true
-// }).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
+mongoose.connect(process.env.MONGODB_ON, {
+    useNewUrlParser: true,  useUnifiedTopology: true
+}).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
 // mongoose connect
-mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err);});
+// mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err);});
 
 passport.use(userModel.createStrategy());
 passport.serializeUser(userModel.serializeUser());
@@ -129,7 +129,13 @@ else{
                     if(err){
                         console.log("no such user!!");
                     }
-                    if(found.typeOfPerson === "citizen")res.redirect('/citizen/'+ username);
+                    if(found.typeOfPerson === "citizen")
+                    {   if(found.verified === 'yes')   res.redirect('/citizen/'+ username);
+                        else{
+                            req.flash('message','Verification Takes some days!');
+                            res.redirect('/registration');
+                        }   
+                    }
                     if(found.typeOfPerson === "assigningOfficer")
                     {   if(found.verified === 'yes')  res.redirect('/assigningOfficer/' + username);
                         else{
