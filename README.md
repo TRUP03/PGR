@@ -2,6 +2,9 @@
 Public Grievance Redress and Monitoring System(PGRAMS)
 Public Grievance Redress and Monitoring System (PGRAMS) is an online platform available to the citizens 24x7 to lodge their grievances to the Institute authorities on any subject related to Domestic and Technical issues. It is a single portal connected to all the Students/Professors of the Institution. EndUser, Oficcer and have the Technician have role-based access to this system.
 
+The website is live here 
+https://pgr1.onrender.com/
+
 Tech Stack:
 
 FrontEnd : HTML, CSS, JS
